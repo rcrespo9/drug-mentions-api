@@ -27,7 +27,7 @@ app.get('/search', async (req, res) => {
   }
 });
 
-app.get('/songs/:id', async (req, res) => {
+app.get('/song-lyrics/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
