@@ -1,5 +1,6 @@
 const express = require('express');
 const fetch = require('isomorphic-fetch');
+const cheerio = require('cheerio');
 require('dotenv').config();
 
 const app = express();
@@ -31,10 +32,19 @@ app.get('/song-lyrics/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const response = await fetch(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
-    const songRes = await response.json();
+    const songRes = await fetch(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
+    const songJson = await songRes.json();
+    const {
+      response: { song },
+    } = songJson;
 
-    res.json(songRes.response.song);
+    const songPage = await fetch(`${song.url}`);
+    const songPageHTML = await songPage.text();
+
+    const $ = cheerio.load(songPageHTML);
+    const lyrics = $('.lyrics').text();
+
+    res.json({ title: song.full_title, lyrics });
   } catch (error) {
     throw new Error(error);
   }
