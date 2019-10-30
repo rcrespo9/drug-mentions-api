@@ -21,7 +21,20 @@ app.get('/search', async (req, res) => {
     const response = await fetch(`${geniusApiUrl}/search?q=${q}`, fetchHeaders);
     const searchResults = await response.json();
 
-    res.json(searchResults);
+    res.json(searchResults.response.hits);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+app.get('/songs/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const response = await fetch(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
+    const songRes = await response.json();
+
+    res.json(songRes.response.song);
   } catch (error) {
     throw new Error(error);
   }
