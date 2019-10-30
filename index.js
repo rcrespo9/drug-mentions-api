@@ -7,18 +7,18 @@ require('dotenv').config();
 const app = express();
 const port = 5000;
 
-const corsWhitelist = ['http://localhost:3000'];
-const corsOptions = {
-  origin(origin, callback) {
-    if (corsWhitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+// const corsWhitelist = [];
+// const corsOptions = {
+//   origin(origin, callback) {
+//     if (corsWhitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 const geniusApiUrl = 'https://api.genius.com';
 const fetchHeaders = {
