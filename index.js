@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 require('dotenv').config();
 
 const app = express();
-const port = 4000;
+const port = 5000;
 
 const geniusApiUrl = 'https://api.genius.com';
 const fetchHeaders = {
@@ -50,4 +50,4 @@ app.get('/song-lyrics/:id', async (req, res) => {
   }
 });
 
-app.listen(port, () => console.log(`App listening on port ${port}`));
+app.listen(process.env.PORT || port, () => console.log(`App listening on port ${process.env.PORT || port}`));
