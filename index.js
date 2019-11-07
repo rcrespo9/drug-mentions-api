@@ -35,8 +35,9 @@ app.get('/search', async (req, res) => {
   try {
     const response = await fetch(`${geniusApiUrl}/search?q=${q}`, fetchHeaders);
     const searchResults = await response.json();
+    const songsOnly = searchResults.response.hits.filter((hit) => hit.type === 'song');
 
-    res.json(searchResults.response.hits);
+    res.json(songsOnly);
   } catch (error) {
     throw new Error(error);
   }
