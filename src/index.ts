@@ -1,8 +1,10 @@
-const express = require('express');
-const fetch = require('isomorphic-fetch');
-const cheerio = require('cheerio');
-const cors = require('cors');
-require('dotenv').config();
+import cheerio from "cheerio";
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import fetch from "isomorphic-fetch";
+
+dotenv.config();
 
 const app = express();
 const port = 5000;
@@ -20,22 +22,22 @@ const port = 5000;
 
 app.use(cors());
 
-const geniusApiUrl = 'https://api.genius.com';
+const geniusApiUrl = "https://api.genius.com";
 const fetchHeaders = {
   headers: {
     Authorization: `Bearer ${process.env.GENIUS_API_TOKEN}`,
   },
 };
 
-app.get('/', (req, res) => res.send('Welcome to the Drug Mentions API!'));
+app.get("/", (req, res) => res.send("Welcome to the Drug Mentions API!"));
 
-app.get('/search', async (req, res) => {
+app.get("/search", async (req, res) => {
   const { q } = req.query;
 
   try {
     const response = await fetch(`${geniusApiUrl}/search?q=${q}`, fetchHeaders);
     const searchResults = await response.json();
-    const songsOnly = searchResults.response.hits.filter((hit) => hit.type === 'song');
+    const songsOnly = searchResults.response.hits.filter((hit: any) => hit.type === "song");
 
     res.json(songsOnly);
   } catch (error) {
@@ -43,7 +45,7 @@ app.get('/search', async (req, res) => {
   }
 });
 
-app.get('/song-lyrics/:id', async (req, res) => {
+app.get("/song-lyrics/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -57,7 +59,7 @@ app.get('/song-lyrics/:id', async (req, res) => {
     const songPageHTML = await songPage.text();
 
     const $ = cheerio.load(songPageHTML);
-    const lyrics = $('.lyrics').text();
+    const lyrics = $(".lyrics").text();
 
     res.json({ title: song.full_title, lyrics });
   } catch (error) {
@@ -65,4 +67,7 @@ app.get('/song-lyrics/:id', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || port, () => console.log(`App listening on port ${process.env.PORT || port}`));
+app.listen(process.env.PORT || port, () => {
+  // tslint:disable-next-line:no-console
+  console.log(`App listening on port ${process.env.PORT || port}`);
+});
