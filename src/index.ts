@@ -18,17 +18,17 @@ const app = express();
 const port = 5000;
 
 const corsWhitelist: string[] = [
-  "http://localhost:3000/",
-  "https://drug-mentions.netlify.com/"
+  "http://localhost:3000",
+  "https://drug-mentions.netlify.com"
 ];
 const corsOptions = {
   origin: function(origin: any, callback: any) {
-    if (corsWhitelist.includes(origin) || !origin) {
+    if (corsWhitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
-  },
+  }
 };
 
 app.use(cors(corsOptions));
@@ -36,8 +36,8 @@ app.use(cors(corsOptions));
 const geniusApiUrl = "https://api.genius.com";
 const fetchHeaders = {
   headers: {
-    Authorization: `Bearer ${process.env.GENIUS_API_TOKEN}`,
-  },
+    Authorization: `Bearer ${process.env.GENIUS_API_TOKEN}`
+  }
 };
 
 app.get("/", (req, res) => res.send("Welcome to the Drug Mentions API!"));
@@ -48,7 +48,9 @@ app.get("/search", async (req, res) => {
   try {
     const response = await fetch(`${geniusApiUrl}/search?q=${q}`, fetchHeaders);
     const searchResults = await response.json();
-    const songsOnly = searchResults.response.hits.filter((hit: any) => hit.type === "song");
+    const songsOnly = searchResults.response.hits.filter(
+      (hit: any) => hit.type === "song"
+    );
 
     res.json(songsOnly);
   } catch (error) {
@@ -63,7 +65,7 @@ app.get("/song-lyrics/:id", async (req, res) => {
     const songRes = await fetch(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
     const songJson = await songRes.json();
     const {
-      response: { song },
+      response: { song }
     } = songJson;
 
     const songPage = await fetch(`${song.url}`);
@@ -73,12 +75,17 @@ app.get("/song-lyrics/:id", async (req, res) => {
     const parsedLyrics = $(".lyrics").text();
 
     const drugReferencesArr = scanLyricsForDrugs(drugsData.drugs, parsedLyrics);
-    const drugNames: string[] = drugReferencesArr.map((drugReference) => drugReference.drugName);
+    const drugNames: string[] = drugReferencesArr.map(
+      drugReference => drugReference.drugName
+    );
     const totalDrugReferences: number = drugReferencesArr.reduce(
       (acc, reference) => acc + reference.referenceCount,
       0
     );
-    const drugReferences: IDrugReferences = { totalReferences: totalDrugReferences, references: drugReferencesArr };
+    const drugReferences: IDrugReferences = {
+      totalReferences: totalDrugReferences,
+      references: drugReferencesArr
+    };
     const lyrics = highlightLyrics(drugNames, parsedLyrics);
     const songResponse: ISong = {
       drugReferences,
