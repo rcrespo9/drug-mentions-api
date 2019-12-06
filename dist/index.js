@@ -63,12 +63,17 @@ app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, func
         const songPageHTML = yield songPage.text();
         const $ = cheerio_1.default.load(songPageHTML);
         const parsedLyrics = $(".lyrics").text();
-        const references = scanLyricsForDrugs_1.default(drugs_json_1.default.drugs, parsedLyrics);
-        const drugNames = references.map((drugReference) => drugReference.drugName);
-        const totalReferences = references.reduce((acc, reference) => acc + reference.referenceCount, 0);
-        const drugReferences = { totalReferences, references };
+        const drugReferencesArr = scanLyricsForDrugs_1.default(drugs_json_1.default.drugs, parsedLyrics);
+        const drugNames = drugReferencesArr.map((drugReference) => drugReference.drugName);
+        const totalDrugReferences = drugReferencesArr.reduce((acc, reference) => acc + reference.referenceCount, 0);
+        const drugReferences = { totalReferences: totalDrugReferences, references: drugReferencesArr };
         const lyrics = highlightLyrics_1.default(drugNames, parsedLyrics);
-        res.json({ title: song.full_title, lyrics, drugReferences });
+        const songResponse = {
+            drugReferences,
+            lyrics,
+            title: song.full_title
+        };
+        res.json(songResponse);
     }
     catch (error) {
         throw new Error(error);
