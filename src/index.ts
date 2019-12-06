@@ -83,8 +83,8 @@ app.get("/song-lyrics/:id", async (req, res) => {
       0
     );
     const drugReferences: IDrugReferences = {
-      totalReferences: totalDrugReferences,
-      references: drugReferencesArr
+      references: drugReferencesArr,
+      totalReferences: totalDrugReferences
     };
     const lyrics = highlightLyrics(drugNames, parsedLyrics);
     const songResponse: ISong = {
