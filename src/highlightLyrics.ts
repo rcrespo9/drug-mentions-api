@@ -32,19 +32,19 @@ const highlightLyrics = (drugNames: string[], lyrics: string): string => {
     }
   };
 
-  drugNamesRegexes = Array.from(new Set(drugNames)).map((drug) =>
+  drugNamesRegexes = Array.from(new Set(drugNames)).map(drug =>
     drugRegex(drug)
   );
 
   highlightRegex = new RegExp(`${drugNamesRegexes.join("|")}`, "igm");
 
   if (drugNames.length) {
-    highlightedLyrics = lyrics.replace(highlightRegex, (word) => {
+    highlightedLyrics = lyrics.replace(highlightRegex, word => {
       return `<mark class="highlighted">${word}${
         partOfSpeech(word).abbr && partOfSpeech(word).title
-          ? ` (<abbr title="${partOfSpeech(word).title}">${
-              partOfSpeech(word).abbr
-            }</abbr>)`
+          ? ` (<abbr title="${partOfSpeech(word).title}" aria-label="${
+              partOfSpeech(word).title
+            }">${partOfSpeech(word).abbr}</abbr>)`
           : ""
       }</mark>`;
     });
