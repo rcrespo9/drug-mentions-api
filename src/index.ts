@@ -17,18 +17,21 @@ dotenv.config();
 const app = express();
 const port = 5000;
 
-// const corsWhitelist = [];
-// const corsOptions = {
-//   origin(origin, callback) {
-//     if (corsWhitelist.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-// };
+const corsWhitelist: string[] = [
+  "http://localhost:3000/",
+  "https://drug-mentions.netlify.com/"
+];
+const corsOptions = {
+  origin(origin: any, callback: any) {
+    if (corsWhitelist.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 const geniusApiUrl = "https://api.genius.com";
 const fetchHeaders = {
