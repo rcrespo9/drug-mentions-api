@@ -17,6 +17,9 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
 const isomorphic_fetch_1 = __importDefault(require("isomorphic-fetch"));
+const drugs_json_1 = __importDefault(require("./data/drugs.json"));
+const highlightLyrics_1 = __importDefault(require("./highlightLyrics"));
+const scanLyricsForDrugs_1 = __importDefault(require("./scanLyricsForDrugs"));
 dotenv_1.default.config();
 const app = express_1.default();
 const port = 5000;
@@ -59,8 +62,13 @@ app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, func
         const songPage = yield isomorphic_fetch_1.default(`${song.url}`);
         const songPageHTML = yield songPage.text();
         const $ = cheerio_1.default.load(songPageHTML);
-        const lyrics = $(".lyrics").text();
-        res.json({ title: song.full_title, lyrics });
+        const parsedLyrics = $(".lyrics").text();
+        const references = scanLyricsForDrugs_1.default(drugs_json_1.default.drugs, parsedLyrics);
+        const drugNames = references.map((drugReference) => drugReference.drugName);
+        const totalReferences = references.reduce((acc, reference) => acc + reference.referenceCount, 0);
+        const drugReferences = { totalReferences, references };
+        const lyrics = highlightLyrics_1.default(drugNames, parsedLyrics);
+        res.json({ title: song.full_title, lyrics, drugReferences });
     }
     catch (error) {
         throw new Error(error);

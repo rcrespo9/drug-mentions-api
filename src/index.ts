@@ -4,6 +4,14 @@ import dotenv from "dotenv";
 import express from "express";
 import fetch from "isomorphic-fetch";
 
+import drugsData from "./data/drugs.json";
+
+import highlightLyrics from "./highlightLyrics";
+import scanLyricsForDrugs from "./scanLyricsForDrugs";
+
+import IDrugReferences from "./types_interfaces/DrugReferences";
+import ISong from "./types_interfaces/Song";
+
 dotenv.config();
 
 const app = express();
@@ -59,9 +67,23 @@ app.get("/song-lyrics/:id", async (req, res) => {
     const songPageHTML = await songPage.text();
 
     const $ = cheerio.load(songPageHTML);
-    const lyrics = $(".lyrics").text();
+    const parsedLyrics = $(".lyrics").text();
 
-    res.json({ title: song.full_title, lyrics });
+    const drugReferencesArr = scanLyricsForDrugs(drugsData.drugs, parsedLyrics);
+    const drugNames: string[] = drugReferencesArr.map((drugReference) => drugReference.drugName);
+    const totalDrugReferences: number = drugReferencesArr.reduce(
+      (acc, reference) => acc + reference.referenceCount,
+      0
+    );
+    const drugReferences: IDrugReferences = { totalReferences: totalDrugReferences, references: drugReferencesArr };
+    const lyrics = highlightLyrics(drugNames, parsedLyrics);
+    const songResponse: ISong = {
+      title: song.full_title,
+      lyrics,
+      drugReferences
+    };
+
+    res.json(songResponse);
   } catch (error) {
     throw new Error(error);
   }

@@ -1,0 +1,834 @@
+{
+    "description": "A list of commonly abused drugs",
+    "source": "https://www.addictioncenter.com/drugs/drug-street-names/",
+    "drugs": [
+        {
+            "drugType": "Alcohol",
+            "streetNames": [
+                "Booze",
+                "Brew",
+                "Chug",
+                "Cold One",
+                "Gargle",
+                "Goof",
+                "Giggle Juice",
+                "Hard Stuff",
+                "Hooch",
+                "Jack",
+                "Juice",
+                "Kool Aid",
+                "Mouthwash",
+                "Poison",
+                "Refreshment",
+                "Sauce",
+                "Shine",
+                "Swish",
+                "Vino"
+            ]
+        },
+        {
+            "drugType": "Ativan",
+            "streetNames": [
+                "lorazepam",
+                "Candy",
+                "Downers",
+                "Sleeping Pills",
+                "Tranks"
+            ]
+        },
+        {
+            "drugType": "Halcion",
+            "streetNames": [
+                "triazolam",
+                "Candy",
+                "Downers",
+                "Sleeping Pills",
+                "Tranks"
+            ]
+        },
+        {
+            "drugType": "Klonopin",
+            "streetNames": ["clonazepam", "K", "K-Pin", "Pin", "Super Valium"]
+        },
+        {
+            "drugType": "Librium",
+            "streetNames": [
+                "chlordiazepoxide",
+                "Candy",
+                "Downers",
+                "Sleeping Pills",
+                "Tranks"
+            ]
+        },
+        {
+            "drugType": "Rohypnol",
+            "streetNames": [
+                "flunitrazepam",
+                "Circles",
+                "Date Rape Drug",
+                "Forget-Me Pill",
+                "La Rocha",
+                "Lunch Money",
+                "Mexican Valium",
+                "Mind Eraser",
+                "Roofies",
+                "Wolfies"
+            ]
+        },
+        {
+            "drugType": "Valium",
+            "streetNames": ["diazepam", "Eggs", "Jellies", "Moggies", "Vallies"]
+        },
+        {
+            "drugType": "Xanax",
+            "streetNames": [
+                "alprazolam",
+                "Bars",
+                "Bicycle Handle Bars",
+                "Footballs",
+                "French Fries",
+                "Hulk",
+                "Ladders",
+                "School Bus",
+                "Xan",
+                "Xanies",
+                "Zan",
+                "Zannies",
+                "Zanbars",
+                "Z-Bars"
+            ]
+        },
+        {
+            "drugType": "Ayahuasca",
+            "streetNames": ["Aya", "Hoasca", "Yagé"]
+        },
+        {
+            "drugType": "DMT (N,N-dimethyltryptamine)",
+            "streetNames": ["Dimitri", "The Spirit Molecule"]
+        },
+        {
+            "drugType": "GHB (gamma-Hydroxybutyric)",
+            "streetNames": [
+                "Date Rape Drug",
+                "G",
+                "Geeb",
+                "Georgia Home Boy",
+                "Gina",
+                "Goop",
+                "Grievous Bodily Harm",
+                "Liquid E",
+                "Liquid X",
+                "Scoop"
+            ]
+        },
+        {
+            "drugType": "Ketamine",
+            "streetNames": [
+                "Blind Squid",
+                "Cat Valium",
+                "Green",
+                "Jet",
+                "K",
+                "K-Hold",
+                "Kay",
+                "Special K",
+                "Super Acid",
+                "Vitamin K"
+            ]
+        },
+        {
+            "drugType": "Khat",
+            "streetNames": [
+                "Abyssinian Tea",
+                "African Salad",
+                "Catha",
+                "Chat",
+                "Kat",
+                "Oat",
+                "Qat"
+            ]
+        },
+        {
+            "drugType": "Kratom",
+            "streetNames": [
+                "Biak-biak",
+                "Herbal Speedball",
+                "Ithang",
+                "Kahyam",
+                "Ketum",
+                "Thom"
+            ]
+        },
+        {
+            "drugType": "LSD",
+            "streetNames": [
+                "Acid",
+                "Blotter",
+                "Dots",
+                "Electric Kool Aid",
+                "Lucy in the Sky with Diamonds",
+                "Purple Haze",
+                "Sugar Cubes",
+                "Yellow Sunshine"
+            ]
+        },
+        {
+            "drugType": "Mescaline",
+            "streetNames": [
+                "Big Chief",
+                "Blue Caps",
+                "Buttons",
+                "Cactus",
+                "Mescal",
+                "Moon",
+                "San Pedro",
+                "Topi"
+            ]
+        },
+        {
+            "drugType": "Mushrooms",
+            "streetNames": [
+                "Alice",
+                "Boomers",
+                "Caps",
+                "Cow Patties",
+                "Fungus",
+                "Hongos",
+                "Magic",
+                "Magic Mushrooms",
+                "Mushies",
+                "Pizza Toppings",
+                "Shrooms",
+                "Tweezes"
+            ]
+        },
+        {
+            "drugType": "PCP",
+            "streetNames": [
+                "Angel",
+                "Angel Dust",
+                "Butt Naked",
+                "Dust",
+                "Purple Rain",
+                "Rocket Fuel",
+                "Stardust",
+                "Water",
+                "Wet",
+                "Yellow Fever",
+                "Zombie"
+            ]
+        },
+        {
+            "drugType": "Peyote",
+            "streetNames": [
+                "Black Button",
+                "Cactus",
+                "Green Button",
+                "Half Moon",
+                "Nubs",
+                "Shaman",
+                "Tops"
+            ]
+        },
+        {
+            "drugType": "Psilocybin",
+            "streetNames": [
+                "Little Smoke",
+                "Magic Mushrooms",
+                "Purple Passion",
+                "Shrooms"
+            ]
+        },
+        {
+            "drugType": "Salvia",
+            "streetNames": [
+                "Diviner’s Sage",
+                "Magic Mint",
+                "Maria Pastora",
+                "Sally-D"
+            ]
+        },
+        {
+            "drugType": "Synthetic Cathinones",
+            "streetNames": [
+                "Bath Salts",
+                "Bliss",
+                "Cloud Nine",
+                "Flakka",
+                "Lunar Wave",
+                "Scarface",
+                "Vanilla Sky",
+                "White Lightning"
+            ]
+        },
+        {
+            "drugType": "Black Tar Heroin",
+            "streetNames": ["Chiva", "Mexican Black Tar Heroin", "Mexican Tar"]
+        },
+        {
+            "drugType": "Cocaine",
+            "streetNames": [
+                "Aunt",
+                "Aunt Nora",
+                "Batman",
+                "Bazulco",
+                "Bernice",
+                "Bernie",
+                "Big C",
+                "Big Rush",
+                "Blow",
+                "Blowcaine",
+                "Bump",
+                "Candy",
+                "Charlie",
+                "Coca",
+                "Coke",
+                "Colombia",
+                "Crack",
+                "Dust",
+                "Flake",
+                "Gringa",
+                "Hubba",
+                "Line",
+                "Pearl",
+                "Powder",
+                "Rail",
+                "Rock",
+                "She",
+                "Snow",
+                "Stardust",
+                "Stash",
+                "White Girl"
+            ]
+        },
+        {
+            "drugType": "Cocaine with Heroin",
+            "streetNames": ["Speedball"]
+        },
+        {
+            "drugType": "Crack Cocaine",
+            "streetNames": [
+                "Apple Jacks",
+                "Base",
+                "Ball",
+                "Black Rock",
+                "Blotter",
+                "Bopper",
+                "Chemical",
+                "Crack",
+                "Dice",
+                "Grit",
+                "Hail",
+                "Hard Rock",
+                "Kryptonite",
+                "Purple Caps",
+                "Nuggets",
+                "Rock",
+                "Rocks",
+                "Sleet",
+                "Sugar Block",
+                "Topo",
+                "Tornado",
+                "Trey",
+                "Yam",
+                "Yay"
+            ]
+        },
+        {
+            "drugType": "Heroin",
+            "streetNames": [
+                "Black",
+                "Black Tar",
+                "Black Pearl",
+                "Black Stuff",
+                "Black Eagle",
+                "Brown",
+                "Brown Crystal",
+                "Brown Rhine",
+                "Brown Sugar",
+                "Brown Tape",
+                "China White",
+                "Dope",
+                "Dope",
+                "Dragon",
+                "The Dragon",
+                "He",
+                "Horse",
+                "Junk",
+                "Mexican Brown",
+                "Mexican Mud",
+                "Mexican Horse",
+                "Mud",
+                "Number 3",
+                "Number 4",
+                "Number 8",
+                "Sack",
+                "Scat",
+                "Skag",
+                "Skunk",
+                "Smack",
+                "Snow",
+                "Snowball",
+                "Tar",
+                "White",
+                "White Nurse",
+                "White Lady",
+                "White Horse",
+                "White Girl",
+                "White Boy",
+                "White Stuff"
+            ]
+        },
+        {
+            "drugType": "Marijuana",
+            "streetNames": [
+                "420",
+                "Ashes",
+                "Atshitshi",
+                "Aunt Mary",
+                "Bammy",
+                "Baby Bhang",
+                "Blanket",
+                "Blunt",
+                "Bo-Bo",
+                "Bobo Bush",
+                "Bomber",
+                "Boom",
+                "Bud",
+                "Broccoli",
+                "Cheeba",
+                "Chronic",
+                "Cripple",
+                "Dagga",
+                "Dope",
+                "Dinkie Dow",
+                "Ding",
+                "Dona Juana",
+                "Dona Juanita",
+                "Flower",
+                "Flower Power",
+                "Flower Tops",
+                "Ganja",
+                "Gasper",
+                "Giggle Smoke",
+                "Giggle Weed",
+                "Good Giggles",
+                "Good Butt",
+                "Grass",
+                "Green",
+                "Hash",
+                "Herb",
+                "Hot Stick",
+                "Jane",
+                "Jay",
+                "Jolly Green",
+                "Jolly Green Giant",
+                "Joy Smoke",
+                "Joy Stick",
+                "MJ",
+                "Maryjane",
+                "Mary Jane",
+                "Pot",
+                "Roach",
+                "Reefer",
+                "Sack",
+                "Skunk",
+                "Smoke",
+                "Trees",
+                "Weed"
+            ]
+        },
+        {
+            "drugType": "MDMA",
+            "streetNames": [
+                "Adam",
+                "Beans",
+                "Candy",
+                "Clarity",
+                "Dancing Shoes",
+                "Disco Biscuits",
+                "E",
+                "Ecstasy",
+                "E-Bomb",
+                "Egg Rolls",
+                "Eve",
+                "Happy Pills",
+                "Lover’s Speed",
+                "Malcolm",
+                "Malcolm X",
+                "Molly",
+                "Peace",
+                "Scooby Snacks",
+                "Smartees",
+                "The Vowel",
+                "Uppers",
+                "Vitamin E",
+                "Vitamin X",
+                "Vowel",
+                "X",
+                "XTC"
+            ]
+        },
+        {
+            "drugType": "Methamphetamine",
+            "streetNames": [
+                "Chalk",
+                "Christina",
+                "Cookies",
+                "Cotton Candy",
+                "Crank",
+                "Crystal",
+                "Crystal Meth",
+                "Dunk",
+                "Fire",
+                "Gak",
+                "Garbage",
+                "Glass",
+                "Go Fast",
+                "Go-Go Juice",
+                "Ice",
+                "Meth",
+                "No Doze",
+                "No Stop",
+                "Pookie",
+                "Rocket Fuel",
+                "Scooby Snacks",
+                "Speed",
+                "Trash",
+                "Tweek",
+                "Wash",
+                "White Cross"
+            ]
+        },
+        {
+            "drugType": "Synthetic Marijuana",
+            "streetNames": [
+                "Black Mamba",
+                "Bombay Blue",
+                "Fake Weed",
+                "Genie",
+                "K2",
+                "Moon Rocks",
+                "Spice",
+                "Zohai"
+            ]
+        },
+        {
+            "drugType": "Amyl Nitrate",
+            "streetNames": ["Ames", "Amies", "Amys", "Pearls", "Poppers"]
+        },
+        {
+            "drugType": "Isobutyl Nitrate",
+            "streetNames": [
+                "Aroma of Men",
+                "Bolt",
+                "Bullet",
+                "Climax",
+                "Hardware",
+                "Locker Room",
+                "Poppers",
+                "Quicksilver",
+                "Rush",
+                "Snappers",
+                "Thrust"
+            ]
+        },
+        {
+            "drugType": "Nitrous Oxide",
+            "streetNames": ["Buzz Bomb", "Hippie Crack", "Laughing Gas", "Whippets"]
+        },
+        {
+            "drugType": "Buprenorphine",
+            "streetNames": [
+                "Suboxone",
+                "Subutex",
+                "Buse",
+                "Oranges",
+                "Sobos",
+                "Stops",
+                "Strips",
+                "Sub",
+                "Subs"
+            ]
+        },
+        {
+            "drugType": "Codeine",
+            "streetNames": ["Captain Cody", "Cody", "Little C", "Schoolboy"]
+        },
+        {
+            "drugType": "Codeine with Promethazine",
+            "streetNames": [
+                "Phenergan-Codeine Syrup",
+                "Act",
+                "Lean",
+                "Purple Drank",
+                "Sizzurp",
+                "Texas Tea"
+            ]
+        },
+        {
+            "drugType": "Fentanyl",
+            "streetNames": [
+                "Actiq",
+                "Sublimaze",
+                "Apache",
+                "China Girl",
+                "China White",
+                "Dance Fever",
+                "Goodfella",
+                "Jackpot",
+                "Murder 8",
+                "Tango and Cash",
+                "TNT"
+            ]
+        },
+        {
+            "drugType": "Hydrocodone",
+            "streetNames": [
+                "Lortab",
+                "Norco",
+                "Vicodin",
+                "Bananas",
+                "Dro",
+                "Fluff",
+                "Hydros",
+                "Tabs",
+                "Vikes",
+                "V-itamin",
+                "Watson-387",
+                "357s"
+            ]
+        },
+        {
+            "drugType": "Hydromorphone",
+            "streetNames": [
+                "Dilaudid",
+                "Exalgo",
+                "Dillies",
+                "Footballs",
+                "Juice",
+                "Smack"
+            ]
+        },
+        {
+            "drugType": "Meperidine",
+            "streetNames": ["Demerol", "Demmies", "Pain Killer"]
+        },
+        {
+            "drugType": "Methadone",
+            "streetNames": [
+                "Dolophine",
+                "Methadose",
+                "Amidone",
+                "Dollies",
+                "Dolls",
+                "Fizzies",
+                "Mud",
+                "Red Rock",
+                "Tootsie Roll"
+            ]
+        },
+        {
+            "drugType": "Morphine",
+            "streetNames": [
+                "Duramorph",
+                "MS Contin",
+                "God’s Drug",
+                "Miss Emma",
+                "Monkey",
+                "Morpho",
+                "White Stuff"
+            ]
+        },
+        {
+            "drugType": "Oxycodone",
+            "streetNames": [
+                "OxyContin",
+                "30s",
+                "Hillbilly Heroin",
+                "O.C.",
+                "Oxy",
+                "Oxycet",
+                "Oxycotton",
+                "Ozone"
+            ]
+        },
+        {
+            "drugType": "Oxymorphone",
+            "streetNames": [
+                "Opana",
+                "Biscuits",
+                "Blue Heaven",
+                "Mrs. O",
+                "O Bomb",
+                "Octagons",
+                "Stop Signs"
+            ]
+        },
+        {
+            "drugType": "Percocet",
+            "streetNames": [
+                "Ercs",
+                "Greenies",
+                "Kickers",
+                "M-30s",
+                "Percs",
+                "Rims",
+                "Tires",
+                "Wheels",
+                "512s",
+                "Cet"
+            ]
+        },
+        {
+            "drugType": "Propoxyphene",
+            "streetNames": [
+                "Darvocet",
+                "Darvon",
+                "Footballs",
+                "N’s",
+                "Pink Footballs",
+                "Pinks",
+                "Yellow Footballs",
+                "65s"
+            ]
+        },
+        {
+            "drugType": "Tramadol",
+            "streetNames": ["Ultram", "Chill Pills", "Trammies", "Ultras"]
+        },
+        {
+            "drugType": "Dramamine",
+            "streetNames": ["Dime", "Dime Tabs", "Substance D"]
+        },
+        {
+            "drugType": "DXM",
+            "streetNames": [
+                "Dex",
+                "Dextro",
+                "Drix",
+                "Poor Man’s Ecstasy",
+                "Red Devils",
+                "Robo",
+                "Robotripping",
+                "Triple C",
+                "Tussin",
+                "X"
+            ]
+        },
+        {
+            "drugType": "Sudafed",
+            "streetNames": ["Chalk", "Crank", "Meth", "Speed"]
+        },
+        {
+            "drugType": "Ambien",
+            "streetNames": [
+                "Date Rape Drug",
+                "Forget-Me Pill",
+                "Mexican Valium",
+                "R2",
+                "Roche",
+                "Roofies",
+                "Roofinol",
+                "Rope",
+                "Rophies"
+            ]
+        },
+        {
+            "drugType": "Lunesta",
+            "streetNames": [
+                "Date Rape Drug",
+                "Forget-Me Pill",
+                "Mexican Valium",
+                "R2",
+                "Roche",
+                "Roofies",
+                "Roofinol",
+                "Rope",
+                "Rophies"
+            ]
+        },
+        {
+            "drugType": "Sonata",
+            "streetNames": [
+                "Date Rape Drug",
+                "Forget-Me Pill",
+                "Mexican Valium",
+                "R2",
+                "Roche",
+                "Roofies",
+                "Roofinol",
+                "Rope",
+                "Rophies"
+            ]
+        },
+        {
+            "drugType": "Amytal",
+            "streetNames": [
+                "Barbs",
+                "Red Birds",
+                "Reds",
+                "Yellows",
+                "Yellow Jackets"
+            ]
+        },
+        {
+            "drugType": "Amphetamine",
+            "streetNames": [
+                "Adderall",
+                "Dexedrine",
+                "Addies",
+                "Bennies",
+                "Black Beauties",
+                "Crosses",
+                "Hearts",
+                "LA Turnaround",
+                "Speed",
+                "Truck Drivers",
+                "Uppers"
+            ]
+        },
+        {
+            "drugType": "Antidepressants",
+            "streetNames": [
+                "Paxil",
+                "Prozac",
+                "Zoloft",
+                "Bottled Smiles",
+                "Happy Pill",
+                "Miracle Drug",
+                "Wonder Drug"
+            ]
+        },
+        {
+            "drugType": "Diet Pills",
+            "streetNames": [
+                "phentermine",
+                "Adipex",
+                "Crank",
+                "Fastin",
+                "Fen-Phen",
+                "Speed"
+            ]
+        },
+        {
+            "drugType": "Methylphenidate",
+            "streetNames": ["Concerta", "JIF", "MPH", "Pineapple", "Skippy"]
+        },
+        {
+            "drugType": "Steroids",
+            "streetNames": [
+                "nandrolone",
+                "testosterone",
+                "Arnolds",
+                "Gym Candy",
+                "Juice",
+                "Muscle Builders",
+                "Pumpers",
+                "Roids",
+                "Stackers",
+                "Weight Gainers"
+            ]
+        }
+    ]
+}
