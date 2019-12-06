@@ -22,7 +22,7 @@ const corsWhitelist: string[] = [
   "https://drug-mentions.netlify.com/"
 ];
 const corsOptions = {
-  origin(origin: any, callback: any) {
+  origin: function(origin: any, callback: any) {
     if (corsWhitelist.includes(origin) || !origin) {
       callback(null, true);
     } else {
