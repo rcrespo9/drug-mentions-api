@@ -34,7 +34,7 @@ const highlightLyrics = (drugNames, lyrics) => {
     if (drugNames.length) {
         highlightedLyrics = lyrics.replace(highlightRegex, (word) => {
             return `<mark class="highlighted">${word}${partOfSpeech(word).abbr && partOfSpeech(word).title
-                ? ` (<abbr title="${partOfSpeech(word).title}">${partOfSpeech(word).abbr}</abbr>)`
+                ? ` (<abbr title="${partOfSpeech(word).title}" aria-label="${partOfSpeech(word).title}">${partOfSpeech(word).abbr}</abbr>)`
                 : ""}</mark>`;
         });
     }

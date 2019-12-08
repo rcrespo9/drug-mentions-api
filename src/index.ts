@@ -22,7 +22,7 @@ const corsWhitelist: string[] = [
   "https://drug-mentions.netlify.com"
 ];
 const corsOptions = {
-  origin: function(origin: any, callback: any) {
+  origin(origin: any, callback: any) {
     if (corsWhitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
@@ -76,7 +76,7 @@ app.get("/song-lyrics/:id", async (req, res) => {
 
     const drugReferencesArr = scanLyricsForDrugs(drugsData.drugs, parsedLyrics);
     const drugNames: string[] = drugReferencesArr.map(
-      drugReference => drugReference.drugName
+      (drugReference) => drugReference.drugName
     );
     const totalDrugReferences: number = drugReferencesArr.reduce(
       (acc, reference) => acc + reference.referenceCount,
@@ -100,6 +100,11 @@ app.get("/song-lyrics/:id", async (req, res) => {
 });
 
 app.listen(process.env.PORT || port, () => {
+  const commonCharacters = ".,/#!$%^&*;:{}=\\-_`~@é";
+  const lookBehindCharacterSet = `[${commonCharacters}]`;
+  const lookAheadCharacterSet = `[${commonCharacters}'‘’“”"]`;
+  // tslint:disable-next-line:no-console
+  console.log(`(?<!${lookBehindCharacterSet})\\btetas?(?!${lookAheadCharacterSet}\\b)\\b(?![.*])`);
   // tslint:disable-next-line:no-console
   console.log(`App listening on port ${process.env.PORT || port}`);
 });

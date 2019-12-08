@@ -23,22 +23,26 @@ const scanLyricsForDrugs_1 = __importDefault(require("./scanLyricsForDrugs"));
 dotenv_1.default.config();
 const app = express_1.default();
 const port = 5000;
-// const corsWhitelist = [];
-// const corsOptions = {
-//   origin(origin, callback) {
-//     if (corsWhitelist.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-// };
-app.use(cors_1.default());
+const corsWhitelist = [
+    "http://localhost:3000",
+    "https://drug-mentions.netlify.com"
+];
+const corsOptions = {
+    origin(origin, callback) {
+        if (corsWhitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    }
+};
+app.use(cors_1.default(corsOptions));
 const geniusApiUrl = "https://api.genius.com";
 const fetchHeaders = {
     headers: {
-        Authorization: `Bearer ${process.env.GENIUS_API_TOKEN}`,
-    },
+        Authorization: `Bearer ${process.env.GENIUS_API_TOKEN}`
+    }
 };
 app.get("/", (req, res) => res.send("Welcome to the Drug Mentions API!"));
 app.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -58,7 +62,7 @@ app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, func
     try {
         const songRes = yield isomorphic_fetch_1.default(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
         const songJson = yield songRes.json();
-        const { response: { song }, } = songJson;
+        const { response: { song } } = songJson;
         const songPage = yield isomorphic_fetch_1.default(`${song.url}`);
         const songPageHTML = yield songPage.text();
         const $ = cheerio_1.default.load(songPageHTML);
@@ -66,7 +70,10 @@ app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, func
         const drugReferencesArr = scanLyricsForDrugs_1.default(drugs_json_1.default.drugs, parsedLyrics);
         const drugNames = drugReferencesArr.map((drugReference) => drugReference.drugName);
         const totalDrugReferences = drugReferencesArr.reduce((acc, reference) => acc + reference.referenceCount, 0);
-        const drugReferences = { totalReferences: totalDrugReferences, references: drugReferencesArr };
+        const drugReferences = {
+            references: drugReferencesArr,
+            totalReferences: totalDrugReferences
+        };
         const lyrics = highlightLyrics_1.default(drugNames, parsedLyrics);
         const songResponse = {
             drugReferences,
@@ -80,6 +87,11 @@ app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, func
     }
 }));
 app.listen(process.env.PORT || port, () => {
+    const commonCharacters = ".,/#!$%^&*;:{}=\\-_`~@é";
+    const lookBehindCharacterSet = `[${commonCharacters}]`;
+    const lookAheadCharacterSet = `[${commonCharacters}'‘’“”"]`;
+    // tslint:disable-next-line:no-console
+    console.log(`(?<!${lookBehindCharacterSet})\\btetas?(?!${lookAheadCharacterSet}\\b)\\b(?![.*])`);
     // tslint:disable-next-line:no-console
     console.log(`App listening on port ${process.env.PORT || port}`);
 });

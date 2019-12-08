@@ -7,7 +7,7 @@ const drugRegex = (drugName: string): string => {
 
   return `(?<!${lookBehindCharacterSet})\\b${escapeRegExp(
     drugName
-  )}s?(?!${lookAheadCharacterSet}\\b)\\b(?![.*])`;
+  )}s?(?!${lookAheadCharacterSet}\\b)\\b(?!${lookAheadCharacterSet})`;
 };
 
 export default drugRegex;
