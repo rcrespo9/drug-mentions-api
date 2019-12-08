@@ -100,11 +100,6 @@ app.get("/song-lyrics/:id", async (req, res) => {
 });
 
 app.listen(process.env.PORT || port, () => {
-  const commonCharacters = ".,/#!$%^&*;:{}=\\-_`~@é";
-  const lookBehindCharacterSet = `[${commonCharacters}]`;
-  const lookAheadCharacterSet = `[${commonCharacters}'‘’“”"]`;
-  // tslint:disable-next-line:no-console
-  console.log(`(?<!${lookBehindCharacterSet})\\btetas?(?!${lookAheadCharacterSet}\\b)\\b(?![.*])`);
   // tslint:disable-next-line:no-console
   console.log(`App listening on port ${process.env.PORT || port}`);
 });
