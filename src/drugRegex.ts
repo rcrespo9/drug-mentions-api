@@ -1,4 +1,5 @@
 import { escapeRegExp } from "lodash";
+import pluralize from "pluralize";
 
 const drugRegex = (drugName: string): string => {
   const commonCharacters = ".,/#!$%^&*;:{}=\\-_`~@é";
@@ -6,8 +7,10 @@ const drugRegex = (drugName: string): string => {
   const lookAheadCharacterSet = `[${commonCharacters}'‘’“”"]`;
 
   return `(?<!${lookBehindCharacterSet})\\b${escapeRegExp(
-    drugName
-  )}s?(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
+    pluralize.plural(drugName)
+  )}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])|(?<!${lookBehindCharacterSet})\\b${escapeRegExp(
+    pluralize.singular(drugName)
+  )}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
 };
 
 export default drugRegex;

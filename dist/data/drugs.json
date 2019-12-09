@@ -37,6 +37,10 @@
             ]
         },
         {
+            "drugType": "Drugs",
+            "streetNames": []
+        },
+        {
             "drugType": "Halcion",
             "streetNames": [
                 "triazolam",
