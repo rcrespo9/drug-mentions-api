@@ -681,6 +681,10 @@
             ]
         },
         {
+            "drugType": "Pills",
+            "streetNames": []
+        },
+        {
             "drugType": "Propoxyphene",
             "streetNames": [
                 "Darvocet",

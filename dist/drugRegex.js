@@ -5,7 +5,7 @@ const drugRegex = (drugName) => {
     const commonCharacters = ".,/#!$%^&*;:{}=\\-_`~@é";
     const lookBehindCharacterSet = `[${commonCharacters}]`;
     const lookAheadCharacterSet = `[${commonCharacters}'‘’“”"]`;
-    return `(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(drugName)}s?(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
+    return `(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(drugName)}s?(?!${lookAheadCharacterSet}\\b)\\b(?![.*és])`;
 };
 exports.default = drugRegex;
 //# sourceMappingURL=drugRegex.js.map

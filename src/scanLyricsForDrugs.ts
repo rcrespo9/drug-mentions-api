@@ -39,28 +39,30 @@ const scanLyricsForDrugs = (drugs: any[], lyrics: string): IDrugReference[] => {
       });
     }
 
-    drug.streetNames.forEach((streetName: string) => {
-      const streetNamesMentioned = drugRefMatches(
-        streetName,
-        sanitizedLyrics as string
-      );
+    if (drug.streetNames.length) {
+      drug.streetNames.forEach((streetName: string) => {
+        const streetNamesMentioned = drugRefMatches(
+          streetName,
+          sanitizedLyrics as string
+        );
 
-      if (streetNamesMentioned) {
-        if (drugInRefArray(streetName)) {
-          const { drugTypes } = drugInRefArray(streetName)!;
-          if (!drugTypes!.includes(drug.drugType)) {
-            drugTypes!.push(drug.drugType);
+        if (streetNamesMentioned) {
+          if (drugInRefArray(streetName)) {
+            const { drugTypes } = drugInRefArray(streetName)!;
+            if (!drugTypes!.includes(drug.drugType)) {
+              drugTypes!.push(drug.drugType);
+            }
+          } else {
+            drugReferences.push({
+              drugName: streetName,
+              drugTypes: [drug.drugType],
+              isStreetName: true,
+              referenceCount: streetNamesMentioned.length
+            });
           }
-        } else {
-          drugReferences.push({
-            drugName: streetName,
-            drugTypes: [drug.drugType],
-            isStreetName: true,
-            referenceCount: streetNamesMentioned.length
-          });
         }
-      }
-    });
+      });
+    }
   });
 
   return drugReferences;

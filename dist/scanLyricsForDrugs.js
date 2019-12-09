@@ -28,25 +28,27 @@ const scanLyricsForDrugs = (drugs, lyrics) => {
                 referenceCount: drugTypesMentioned.length
             });
         }
-        drug.streetNames.forEach((streetName) => {
-            const streetNamesMentioned = drugRefMatches(streetName, sanitizedLyrics);
-            if (streetNamesMentioned) {
-                if (drugInRefArray(streetName)) {
-                    const { drugTypes } = drugInRefArray(streetName);
-                    if (!drugTypes.includes(drug.drugType)) {
-                        drugTypes.push(drug.drugType);
+        if (drug.streetNames.length) {
+            drug.streetNames.forEach((streetName) => {
+                const streetNamesMentioned = drugRefMatches(streetName, sanitizedLyrics);
+                if (streetNamesMentioned) {
+                    if (drugInRefArray(streetName)) {
+                        const { drugTypes } = drugInRefArray(streetName);
+                        if (!drugTypes.includes(drug.drugType)) {
+                            drugTypes.push(drug.drugType);
+                        }
+                    }
+                    else {
+                        drugReferences.push({
+                            drugName: streetName,
+                            drugTypes: [drug.drugType],
+                            isStreetName: true,
+                            referenceCount: streetNamesMentioned.length
+                        });
                     }
                 }
-                else {
-                    drugReferences.push({
-                        drugName: streetName,
-                        drugTypes: [drug.drugType],
-                        isStreetName: true,
-                        referenceCount: streetNamesMentioned.length
-                    });
-                }
-            }
-        });
+            });
+        }
     });
     return drugReferences;
 };
