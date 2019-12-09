@@ -45,8 +45,9 @@ const scanLyricsForDrugs = (drugs: any[], lyrics: string): IDrugReference[] => {
           streetName,
           sanitizedLyrics as string
         );
-
         if (streetNamesMentioned) {
+          // tslint:disable-next-line:no-console
+          console.log(streetNamesMentioned);
           if (drugInRefArray(streetName)) {
             const { drugTypes } = drugInRefArray(streetName)!;
             if (!drugTypes!.includes(drug.drugType)) {

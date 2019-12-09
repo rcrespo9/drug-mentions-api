@@ -9,7 +9,12 @@ const drugRegex = (drugName) => {
     const commonCharacters = ".,/#!$%^&*;:{}=\\-_`~@é";
     const lookBehindCharacterSet = `[${commonCharacters}]`;
     const lookAheadCharacterSet = `[${commonCharacters}'‘’“”"]`;
-    return `(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(pluralize_1.default.plural(drugName))}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])|(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(pluralize_1.default.singular(drugName))}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
+    const excludedPluralize = ["She", "He", "E"];
+    const pluralDrugName = excludedPluralize.includes(drugName)
+        ? drugName
+        : pluralize_1.default(drugName);
+    const regex = `(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(pluralDrugName)}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])|(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(pluralize_1.default.singular(drugName))}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
+    return regex;
 };
 exports.default = drugRegex;
 //# sourceMappingURL=drugRegex.js.map

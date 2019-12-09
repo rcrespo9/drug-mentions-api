@@ -32,6 +32,8 @@ const scanLyricsForDrugs = (drugs, lyrics) => {
             drug.streetNames.forEach((streetName) => {
                 const streetNamesMentioned = drugRefMatches(streetName, sanitizedLyrics);
                 if (streetNamesMentioned) {
+                    // tslint:disable-next-line:no-console
+                    console.log(streetNamesMentioned);
                     if (drugInRefArray(streetName)) {
                         const { drugTypes } = drugInRefArray(streetName);
                         if (!drugTypes.includes(drug.drugType)) {
