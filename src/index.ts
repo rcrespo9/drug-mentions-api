@@ -19,7 +19,8 @@ const port = 5000;
 
 const corsWhitelist: string[] = [
   "http://localhost:3000",
-  "https://drug-mentions.netlify.com"
+  "https://drug-mentions.netlify.com",
+  "https://drug-mentions.netlify.app"
 ];
 const corsOptions = {
   origin(origin: any, callback: any) {
