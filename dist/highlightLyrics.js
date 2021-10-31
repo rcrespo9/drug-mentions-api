@@ -16,20 +16,20 @@ const highlightLyrics = (drugNames, lyrics) => {
     let highlightRegex;
     let highlightedLyrics = lyrics;
     const partOfSpeech = (word) => {
-        if (compromise_1.default(word).match("#Adjective").found) {
+        if ((0, compromise_1.default)(word).match("#Adjective").found) {
             return new PartOfSpeechAbbr("adj.", "Adjective");
         }
-        else if (compromise_1.default(word).match("#Pronoun").found) {
+        else if ((0, compromise_1.default)(word).match("#Pronoun").found) {
             return new PartOfSpeechAbbr("pron.", "Pronoun");
         }
-        else if (compromise_1.default(word).match("#Verb").found) {
+        else if ((0, compromise_1.default)(word).match("#Verb").found) {
             return new PartOfSpeechAbbr("v.", "Verb");
         }
         else {
             return new PartOfSpeechAbbr("", "");
         }
     };
-    drugNamesRegexes = Array.from(new Set(drugNames)).map((drug) => drugRegex_1.default(drug));
+    drugNamesRegexes = Array.from(new Set(drugNames)).map((drug) => (0, drugRegex_1.default)(drug));
     highlightRegex = new RegExp(`${drugNamesRegexes.join("|")}`, "igm");
     if (drugNames.length) {
         highlightedLyrics = lyrics.replace(highlightRegex, (word) => {

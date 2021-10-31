@@ -55,6 +55,7 @@ app.get("/search", async (req, res) => {
 
     res.json(songsOnly);
   } catch (error) {
+    // @ts-ignore
     throw new Error(error);
   }
 });
@@ -73,7 +74,7 @@ app.get("/song-lyrics/:id", async (req, res) => {
     const songPageHTML = await songPage.text();
 
     const $ = cheerio.load(songPageHTML);
-    const parsedLyrics = $(".lyrics").text();
+    const parsedLyrics = $("[class^='Lyrics__Container']").text();
 
     const drugReferencesArr = scanLyricsForDrugs(drugsData.drugs, parsedLyrics);
     const drugNames: string[] = drugReferencesArr.map(
@@ -96,6 +97,7 @@ app.get("/song-lyrics/:id", async (req, res) => {
 
     res.json(songResponse);
   } catch (error) {
+    // @ts-ignore
     throw new Error(error);
   }
 });

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const compromise_1 = __importDefault(require("compromise"));
 const drugRegex_1 = __importDefault(require("./drugRegex"));
 const drugRefMatches = (drugName, lyrics) => {
-    const regex = new RegExp(drugRegex_1.default(drugName), "igm");
+    const regex = new RegExp((0, drugRegex_1.default)(drugName), "igm");
     const matches = lyrics.match(regex);
     return matches;
 };
@@ -15,7 +15,7 @@ const scanLyricsForDrugs = (drugs, lyrics) => {
     // tslint:disable-next-line:max-line-length
     const replacedStr = "\n[replaced]\n"; // small hack until compromise library fixes bug that removes whitespace when words are deleted/replaced
     const lyricsHeadersRegex = /(?:(\[|\()(Intro|Verse|Chorus|Bridge)).*(?:\]|\))/gim;
-    const sanitizedLyrics = compromise_1.default(lyrics.replace(lyricsHeadersRegex, " "))
+    const sanitizedLyrics = (0, compromise_1.default)(lyrics.replace(/<br\s*[\/]?>/gi, " ").replace(lyricsHeadersRegex, " "))
         .replace("#Contraction", replacedStr)
         .out("text");
     const drugInRefArray = (drugName) => drugReferences.find((drugMentioned) => drugMentioned.drugName === drugName);
@@ -32,8 +32,6 @@ const scanLyricsForDrugs = (drugs, lyrics) => {
             drug.streetNames.forEach((streetName) => {
                 const streetNamesMentioned = drugRefMatches(streetName, sanitizedLyrics);
                 if (streetNamesMentioned) {
-                    // tslint:disable-next-line:no-console
-                    console.log(streetNamesMentioned);
                     if (drugInRefArray(streetName)) {
                         const { drugTypes } = drugInRefArray(streetName);
                         if (!drugTypes.includes(drug.drugType)) {

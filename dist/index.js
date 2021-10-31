@@ -21,11 +21,12 @@ const drugs_json_1 = __importDefault(require("./data/drugs.json"));
 const highlightLyrics_1 = __importDefault(require("./highlightLyrics"));
 const scanLyricsForDrugs_1 = __importDefault(require("./scanLyricsForDrugs"));
 dotenv_1.default.config();
-const app = express_1.default();
+const app = (0, express_1.default)();
 const port = 5000;
 const corsWhitelist = [
     "http://localhost:3000",
-    "https://drug-mentions.netlify.com"
+    "https://drug-mentions.netlify.com",
+    "https://drug-mentions.netlify.app"
 ];
 const corsOptions = {
     origin(origin, callback) {
@@ -37,7 +38,7 @@ const corsOptions = {
         }
     }
 };
-app.use(cors_1.default(corsOptions));
+app.use((0, cors_1.default)(corsOptions));
 const geniusApiUrl = "https://api.genius.com";
 const fetchHeaders = {
     headers: {
@@ -48,33 +49,34 @@ app.get("/", (req, res) => res.send("Welcome to the Drug Mentions API!"));
 app.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { q } = req.query;
     try {
-        const response = yield isomorphic_fetch_1.default(`${geniusApiUrl}/search?q=${q}`, fetchHeaders);
+        const response = yield (0, isomorphic_fetch_1.default)(`${geniusApiUrl}/search?q=${q}`, fetchHeaders);
         const searchResults = yield response.json();
         const songsOnly = searchResults.response.hits.filter((hit) => hit.type === "song");
         res.json(songsOnly);
     }
     catch (error) {
+        // @ts-ignore
         throw new Error(error);
     }
 }));
 app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const songRes = yield isomorphic_fetch_1.default(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
+        const songRes = yield (0, isomorphic_fetch_1.default)(`${geniusApiUrl}/songs/${id}`, fetchHeaders);
         const songJson = yield songRes.json();
         const { response: { song } } = songJson;
-        const songPage = yield isomorphic_fetch_1.default(`${song.url}`);
+        const songPage = yield (0, isomorphic_fetch_1.default)(`${song.url}`);
         const songPageHTML = yield songPage.text();
         const $ = cheerio_1.default.load(songPageHTML);
-        const parsedLyrics = $(".lyrics").text();
-        const drugReferencesArr = scanLyricsForDrugs_1.default(drugs_json_1.default.drugs, parsedLyrics);
+        const parsedLyrics = $("[class^='Lyrics__Container']").text();
+        const drugReferencesArr = (0, scanLyricsForDrugs_1.default)(drugs_json_1.default.drugs, parsedLyrics);
         const drugNames = drugReferencesArr.map((drugReference) => drugReference.drugName);
         const totalDrugReferences = drugReferencesArr.reduce((acc, reference) => acc + reference.referenceCount, 0);
         const drugReferences = {
             references: drugReferencesArr,
             totalReferences: totalDrugReferences
         };
-        const lyrics = highlightLyrics_1.default(drugNames, parsedLyrics);
+        const lyrics = (0, highlightLyrics_1.default)(drugNames, parsedLyrics);
         const songResponse = {
             drugReferences,
             lyrics,
@@ -83,6 +85,7 @@ app.get("/song-lyrics/:id", (req, res) => __awaiter(void 0, void 0, void 0, func
         res.json(songResponse);
     }
     catch (error) {
+        // @ts-ignore
         throw new Error(error);
     }
 }));

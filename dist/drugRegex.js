@@ -12,8 +12,8 @@ const drugRegex = (drugName) => {
     const excludedPluralize = ["She", "He", "E"];
     const pluralDrugName = excludedPluralize.includes(drugName)
         ? drugName
-        : pluralize_1.default(drugName);
-    const regex = `(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(pluralDrugName)}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])|(?<!${lookBehindCharacterSet})\\b${lodash_1.escapeRegExp(pluralize_1.default.singular(drugName))}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
+        : (0, pluralize_1.default)(drugName);
+    const regex = `(?<!${lookBehindCharacterSet})\\b${(0, lodash_1.escapeRegExp)(pluralDrugName)}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])|(?<!${lookBehindCharacterSet})\\b${(0, lodash_1.escapeRegExp)(pluralize_1.default.singular(drugName))}(?!${lookAheadCharacterSet}\\b)\\b(?![.*é])`;
     return regex;
 };
 exports.default = drugRegex;
